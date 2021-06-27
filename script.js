@@ -2,6 +2,10 @@ let container = document.createElement('div');
 container.style.cssText = 'width: 600px; height: 600px; background-color: gold; border-radius: 50%; position: relative; margin: 0 auto;';
 document.body.append(container);
 
+let time = document.createElement('div');
+time.style.cssText = 'width: 150px; height: 30px; position: absolute; top: 220px; left: 225px; font-size: 25px; font-family: monospace; text-align: center;';
+container.append(time);
+
 for (let i = 1; i < 13; i++) {
     let subcontainer = document.createElement('div');
     subcontainer.style.cssText = 'width: 0px; height: 0px; position: relative; top: 50%; left: 50%; transform: rotate('+ 360/12*i +'deg);';
@@ -35,6 +39,7 @@ function setTime() {
     secArrow.style.cssText += ' transform: rotate('+ 360/60*now.getSeconds() +'deg)';
     minArrow.style.cssText += ' transform: rotate('+ (360/60*now.getMinutes()+6/60*now.getSeconds()) +'deg)';
     hArrow.style.cssText += ' transform: rotate('+ (360/12*now.getHours()+30/60*now.getMinutes()) +'deg)';
+    time.textContent = now.toLocaleTimeString();
 };
   
 setInterval(setTime, 200);
