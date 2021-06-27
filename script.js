@@ -28,3 +28,13 @@ arrowSubcontainer.append(minArrow);
 let secArrow = document.createElement('div');
 secArrow.style.cssText = 'width: 2px; height: 230px; background-color: black; opacity: 0.9; border-radius: 10px; position: absolute; bottom: 0; left: -1px; transform-origin: bottom;';
 arrowSubcontainer.append(secArrow);
+
+
+function setTime() {
+    let now = new Date();
+    secArrow.style.cssText += ' transform: rotate('+ 360/60*now.getSeconds() +'deg)';
+    minArrow.style.cssText += ' transform: rotate('+ (360/60*now.getMinutes()+6/60*now.getSeconds()) +'deg)';
+    hArrow.style.cssText += ' transform: rotate('+ (360/12*now.getHours()+30/60*now.getMinutes()) +'deg)';
+};
+  
+setInterval(setTime, 200);
